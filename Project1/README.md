@@ -38,6 +38,16 @@ $python `filename.py` # Launch the test script
 If you install any other dependency, update `requirements.txt` with ```pip freeze > requirements.txt```
 Do not forget to activate/deactivate virtualenv before/after working.
 
+## Setup for Login Page
+
+```bash
+$cd Views/login
+$npm install
+$npm start
+```
+
+The React App will launch.
+
 ### Notes for the successful_login_case.py
 
 I used an environment variable to store the path to the ChromeDriver binary on my computer, my BilkentID and SRS Password, thus to run the script on your pc, you should create an environment variable file under `Scripts/`.

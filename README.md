@@ -1,2 +1,3 @@
-# CS458
-CS458 Summer 21 Semester Projects
+# CS458 Summer 2021 Projects
+
+ProjectX will be under its directory.
