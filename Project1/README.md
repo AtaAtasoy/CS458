@@ -48,14 +48,24 @@ $npm start
 
 The React App will launch.
 
-### Notes for the successful_login_case.py
+### Environment Variables
 
-I used an environment variable to store the path to the ChromeDriver binary on my computer, my BilkentID and SRS Password, thus to run the script on your pc, you should create an environment variable file under `Scripts/`.
+An environment variable to store the path to the ChromeDriver, valid Bilkent ID, valid password, invalid Bilkent ID, invalid password and the website containing the IP of the local computer. Create the `.env` file under `Scripts/`.
 
 ```bash
 $touch .env #Creates the environment variable
 ```
 
-The environment variables work as a Key-Value pair. Your .env file should look like this.
+List of environment variables:
 
-![.env structure](https://i.hizliresim.com/l92a5rp.png)
+```bash
+INVALID_BILKENT_ID
+INVALID_PASSWORD
+VALID_BILKENT_ID
+VALID_PASSWORD
+CHROMEDRIVER_PATH
+WEBSITE
+```
+
+The environment variables work as a Key-Value pair. Your .env file should look like this.
+![.env structure](https://i.hizliresim.com/f5zavtr.png)
