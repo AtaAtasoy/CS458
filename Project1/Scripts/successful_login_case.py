@@ -15,7 +15,7 @@ load_dotenv()
 driver = Chrome(os.environ.get("CHROMEDRIVER_PATH"))
 wait = WebDriverWait(driver, 15)
 
-driver.get("https://stars.bilkent.edu.tr/accounts/login/")
+driver.get("http://192.168.1.4:3000")
 
 username = driver.find_element(By.XPATH, "/html/body/div/div[1]/div[2]/div[1]/div/section/form/fieldset/div/div[1]/div[1]/div/div/input")
 
