@@ -18,13 +18,13 @@ You should specify the path to your ChromeDriver binary to use Selenium WebDrive
 
 ### Python3 (3.8 prefered)
 
-Use Python3 (3.8 / 3.9 Pref.) Install virtualenv for Python, it will be useful to keep the dependencies consistent for each member of the group.
+Use Python3 (3.8 / 3.9 Pref.) Install virtualenv for Python, it will be useful to keep the dependencies consistent for each member of the group. 
 
 ```bash
 $sudo add-apt-repository ppa:deadsnakes/ppa
 $sudo apt update
 $sudo apt install python3.8
-$pip install virtualenv # Required
+$pip install virtualenv # Maybe not necessary since we are only using 2 dependencies..
 ```
 
 Note that sometimes command `python/pip` might refer to python2.7 and `python3/pip3` might refer to python3.\*. Use python3 and pip3 instead of python/pip if you are facing this problem.
