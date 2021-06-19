@@ -10,6 +10,7 @@ function App() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [validId, setValidId] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
 
   // Initialize the user credentials
   useEffect(() => {
@@ -22,21 +23,25 @@ function App() {
 
   // Validate the inputs
   function validateCredentials(bilkentId, password) {
-    if (!userCredentials.has(bilkentId)) {
-      setValidId(false);
-    } 
-    else if (userCredentials.get(bilkentId) !== password){
-      setValidPassword(false);
-    } else {
-      setShowSuccess(true);
-      setValidId(true);
-      setValidPassword(true);
+    if (bilkentId.length !== 0 && password.length !== 0){
+      if (!userCredentials.has(bilkentId)) {
+        setValidId(false);
+      }
+      else if (userCredentials.get(bilkentId) !== password) {
+        setValidId(true);
+        setValidPassword(false);
+      } else {
+        setShowSuccess(true);
+        setValidId(true);
+        setValidPassword(true);
+      }
     }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     //alert(`Id: ${bilkentId}, Password: ${password}`);
+    setSubmitted(true);
     validateCredentials(bilkentId, password);
   }
 
@@ -51,6 +56,8 @@ function App() {
         <br />
         <input type="submit" style={{ marginTop: "10px" }}></input>
       </form>
+      {submitted && bilkentId.length === 0 && <div class="message" style={{ marginTop: "10px" }}>Bilkent ID cannot be blank</div>}
+      {submitted && password.length === 0 && <div class="message" style={{ marginTop: "10px" }}>Password cannot be blank</div>}
       {!validPassword && <div class="message" style={{ marginTop: "10px" }}>Invalid Password</div>}
       {!validId && <div class="message" style={{ marginTop: "10px" }}>Invalid Id</div>}
       {showSuccess && <div class="message" style={{ marginTop: "10px" }}>Login Successful</div>}
