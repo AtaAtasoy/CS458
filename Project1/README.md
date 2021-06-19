@@ -1,5 +1,9 @@
 # Project 1 - Automated Web Testing with Selenium
 
+## Report
+
+[Click here to edit the report](https://docs.google.com/document/d/1uFZeMju9XPoe6h4nMf7HrCA_6m5oa4refd7nQ7KwR-8/edit?usp=sharing)
+
 ## Project Structure
 
 - `Scripts/` for the Selenium scripts.
