@@ -59,11 +59,11 @@ export default function Login() {
                 <br />
                 <input type="submit" style={{ marginTop: "10px" }}></input>
             </form>
-            {submitted && bilkentId.length === 0 && <div class="message" style={{ marginTop: "10px" }}>Bilkent ID cannot be blank</div>}
-            {submitted && password.length === 0 && <div class="message" style={{ marginTop: "10px" }}>Password cannot be blank</div>}
-            {!validPassword && <div class="message" style={{ marginTop: "10px" }}>Invalid Password</div>}
-            {!validId && <div class="message" style={{ marginTop: "10px" }}>Invalid Id</div>}
-            {showSuccess && <div class="message" style={{ marginTop: "10px" }}>Login Successful</div>}
+            {submitted && bilkentId.length === 0 && <div class="message" id="no_blank_id" style={{ marginTop: "10px" }}>Bilkent ID cannot be blank</div>}
+            {submitted && password.length === 0 && <div class="message" id="no_blank_password" style={{ marginTop: "10px" }}>Password cannot be blank</div>}
+            {!validPassword && <div class="message" id="invalid_password" style={{ marginTop: "10px" }}>Invalid Password</div>}
+            {!validId && <div class="message" id="invalid_id" style={{ marginTop: "10px" }}>Invalid Id</div>}
+            {showSuccess && <div class="message" id="success" style={{ marginTop: "10px" }}>Login Successful</div>}
         </div>
     );
 }
