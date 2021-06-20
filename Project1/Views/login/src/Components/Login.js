@@ -8,6 +8,7 @@ let userCredentials = new Map()
 export default function Login() {
 
     const {t, i18n } = useTranslation();
+    const timeZoneOffset = new Date().getTimezoneOffset();
 
     const navigate = useNavigate();
     const [bilkentId, setBilkentId] = useState('');
@@ -16,9 +17,13 @@ export default function Login() {
     const [validId, setValidId] = useState(true);
     const [validPassword, setValidPassword] = useState(true);
     const [submitted, setSubmitted] = useState(false);
+    const [validTimezone, setValidTimezone] = useState(true);
 
     // Initialize the user credentials
     useEffect(() => {
+
+        console.log("1. ", timeZoneOffset);
+
         userCredentials.set("54414028", "zAencs1t");
         userCredentials.set("88955417", "e6EFjvaH");
         userCredentials.set("87350380", "KJYKAN60");
@@ -46,9 +51,13 @@ export default function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        //alert(`Id: ${bilkentId}, Password: ${password}`);
         setSubmitted(true);
-        validateCredentials(bilkentId, password);
+        if (timeZoneOffset !== -180){ // GMT+3 has offset of -180
+            setValidTimezone(false);
+        }
+        else {
+            validateCredentials(bilkentId, password);
+        }
     }
 
     return (
@@ -62,6 +71,7 @@ export default function Login() {
                 <br />
                 <input type="submit" style={{ marginTop: "10px" }} value={t('Login')}></input>
             </form>
+            {!validTimezone && <div class="message" id="invalid_timezone" style={{ marginTop: "10px" }}>{t('Wrong Timezone')}</div>}
             {submitted && bilkentId.length === 0 && <div class="message" id="no_blank_id" style={{ marginTop: "10px" }}>{t('Empty Bilkent ID Prompt')}</div>}
             {submitted && password.length === 0 && <div class="message" id="no_blank_password" style={{ marginTop: "10px" }}>{t('Empty Password Prompt')}</div>}
             {(!validPassword || !validId )&& <div class="message" id="invalid_password" style={{ marginTop: "10px" }}>{t('Invalid Credential Prompt')}</div>}
