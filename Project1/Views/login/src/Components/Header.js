@@ -18,7 +18,7 @@ export default function Header(){
     return(
         <div class="header" style={{display: "inline-flex"}}>
             <img style={{marginRight: "300px"}} src={t('bilkent_logo_url')} alt="bilkentlogo" height="100px"/>
-            <button style={{marginRight: "20px"}} onClick={changeLanguageHandler}>Language</button>
+            <button style={{marginRight: "20px"}} onClick={changeLanguageHandler}>{(t('Change Language'))}</button>
             <button>{t('Reset Password')}</button>
         </div>
     );

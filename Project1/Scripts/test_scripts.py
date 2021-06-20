@@ -39,8 +39,9 @@ def case2():
 def case3():
     return
 
-# Empty Bilkent ID ? 
-def case4():   
+# Change the language and login
+def case4():  
+     
     return
 
 # Empty Password ? 
