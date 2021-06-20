@@ -62,6 +62,7 @@ def case4():
 # Login from different timezone
 def case5():
     # Must initialize new chromedriver with new timezone
+    print("Launching new chromedriver with timezone set to Europe/London")
     os.environ['TZ'] = 'Europe/London'
     driver2 = webdriver.Chrome(service=s)
     wait2 = WebDriverWait(driver2, 15) 
@@ -87,6 +88,9 @@ def case5():
     print("Test case 5 Succesful")
     driver2.quit()
 
-case4()
-driver.quit()
-case5()
+def auto_login_test():
+    case4()
+    driver.quit()
+    case5()
+
+auto_login_test()
