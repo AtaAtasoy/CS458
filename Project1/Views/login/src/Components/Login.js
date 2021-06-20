@@ -39,7 +39,7 @@ export default function Login() {
                 setShowSuccess(true);
                 setValidId(true);
                 setValidPassword(true);
-                navigate("/home", { logged_in_id: bilkentId });
+                navigate("/home", { state: bilkentId });
             }
         }
     }

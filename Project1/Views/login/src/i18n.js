@@ -12,7 +12,8 @@ const resources = {
       'Empty Bilkent ID Prompt': 'Bilkent ID cannot be blank.',
       'Empty Password Prompt': 'Password cannot be blank.',
       'Invalid Credential Prompt': 'Wrong password or Bilkent ID number.',
-      'Change Language': 'Türkçe'
+      'Change Language': 'Türkçe',
+      'Welcome': 'Welcome'
     }
   },
   tr: {
@@ -25,7 +26,8 @@ const resources = {
       'Empty Bilkent ID Prompt': 'Bilkent No boş bırakılamaz.',
       'Empty Password Prompt': 'Şifre boş bırakılamaz.',
       'Invalid Credential Prompt': 'Şifre ya da Bilkent kimlik numarası hatalı.',
-      'Change Language': 'English'
+      'Change Language': 'English',
+      'Welcome': 'Hoşgeldin'
     }
   }
 };
