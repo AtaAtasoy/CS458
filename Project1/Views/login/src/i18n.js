@@ -8,7 +8,10 @@ const resources = {
       'Reset Password': 'Reset Password',
       'Bilkent ID': 'Bilkent ID',
       'Password': 'Password',
-      'Login': 'Login'
+      'Login': 'Login',
+      'Empty Bilkent ID Prompt': 'Bilkent ID cannot be blank.',
+      'Empty Password Prompt': 'Password cannot be blank.',
+      'Invalid Credential Prompt': 'Wrong password or Bilkent ID number.'
     }
   },
   tr: {
@@ -17,7 +20,10 @@ const resources = {
       'Reset Password': 'Şifre Sıfırla',
       'Bilkent ID': 'Bilkent No',
       'Password': 'Şifre',
-      'Login': 'Giriş'
+      'Login': 'Giriş',
+      'Empty Bilkent ID Prompt': 'Bilkent No boş bırakılamaz.',
+      'Empty Password Prompt': 'Şifre boş bırakılamaz.',
+      'Invalid Credential Prompt': 'Şifre ya da Bilkent kimlik numarası hatalı.'
     }
   }
 };
