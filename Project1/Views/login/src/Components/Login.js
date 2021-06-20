@@ -1,6 +1,5 @@
-import './Login.css';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 let userCredentials = new Map()
 
@@ -36,7 +35,7 @@ export default function Login() {
                 setShowSuccess(true);
                 setValidId(true);
                 setValidPassword(true);
-                navigate("/home", { logged_in_id: bilkentId} );
+                navigate("/home", { logged_in_id: bilkentId });
             }
         }
     }
@@ -49,15 +48,14 @@ export default function Login() {
     }
 
     return (
-        <div className="Login">
-            <h1>Bilkent University Login</h1>
+        <div className="Login" style={{marginTop: "50px"}}>
             <form onSubmit={handleSubmit}>
                 <label>Bilkent ID</label>
                 <input type="text" placeholder="Enter your Bilkent ID" name="bilkentId" value={bilkentId} onChange={(e) => setBilkentId(e.target.value)}></input>
                 <br />
                 <label>Password</label><input type="password" placeholder="Enter your password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <br />
-                <input type="submit" style={{ marginTop: "10px" }}></input>
+                <input type="submit" style={{ marginTop: "10px" }} value="Login"></input>
             </form>
             {submitted && bilkentId.length === 0 && <div class="message" id="no_blank_id" style={{ marginTop: "10px" }}>Bilkent ID cannot be blank</div>}
             {submitted && password.length === 0 && <div class="message" id="no_blank_password" style={{ marginTop: "10px" }}>Password cannot be blank</div>}
