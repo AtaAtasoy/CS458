@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 let userCredentials = new Map()
 
 export default function Login() {
+
+    const {t, i18n } = useTranslation();
 
     const navigate = useNavigate();
     const [bilkentId, setBilkentId] = useState('');
@@ -50,12 +54,13 @@ export default function Login() {
     return (
         <div className="Login" style={{marginTop: "50px"}}>
             <form onSubmit={handleSubmit}>
-                <label>Bilkent ID</label>
-                <input type="text" placeholder="Enter your Bilkent ID" name="bilkentId" value={bilkentId} onChange={(e) => setBilkentId(e.target.value)}></input>
+                <label>{t('Bilkent ID')}</label>
+                <input type="text" name="bilkentId" value={bilkentId} onChange={(e) => setBilkentId(e.target.value)}></input>
                 <br />
-                <label>Password</label><input type="password" placeholder="Enter your password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                <label>{t('Password')}</label>
+                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <br />
-                <input type="submit" style={{ marginTop: "10px" }} value="Login"></input>
+                <input type="submit" style={{ marginTop: "10px" }} value={t('Login')}></input>
             </form>
             {submitted && bilkentId.length === 0 && <div class="message" id="no_blank_id" style={{ marginTop: "10px" }}>Bilkent ID cannot be blank</div>}
             {submitted && password.length === 0 && <div class="message" id="no_blank_password" style={{ marginTop: "10px" }}>Password cannot be blank</div>}
