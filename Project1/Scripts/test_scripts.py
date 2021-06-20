@@ -18,7 +18,7 @@ submit_button = driver.find_element(By.XPATH, '//*[@id="root"]/div/form/input[3]
 
 
 # Valid credentials
-def case1():
+def case1_1():
     username.send_keys(os.environ.get("VALID_BILKENT_ID")) # Enter correct Bilkent ID
     password.send_keys(os.environ.get("VALID_PASSWORD")) # Enter correct password
     ActionChains(driver).click(submit_button).perform() # Click the submit button
@@ -29,11 +29,54 @@ def case1():
     actual_messsage = driver.find_element(By.XPATH, '//*[@id="root"]/div/div').text 
     # Check if the message is as expected
     assert expected_message == actual_messsage, f'Error. Expected Text {expected_message}, but actual text {actual_messsage}'
+def case1_2():
+    username.send_keys("gibberish") # Enter correct Bilkent ID
+    password.send_keys(os.environ.get("VALID_PASSWORD")) # Enter correct password
+    ActionChains(driver).click(submit_button).perform() # Click the submit button
+    # Wait until the message div appears on DOM
+    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div')))
+    expected_message = 'Invalid Id'
+    # Retrieve the displayed message
+    actual_messsage = driver.find_element(By.XPATH, '//*[@id="root"]/div/div').text 
+    # Check if the message is as expected
+    assert expected_message == actual_messsage, f'Error. Expected Text {expected_message}, but actual text {actual_messsage}'
+def case1_3():
+    username.send_keys(os.environ.get("VALID_BILKENT_ID")) # Enter correct Bilkent ID
+    password.send_keys("gibberish") # Enter correct password
+    ActionChains(driver).click(submit_button).perform() # Click the submit button
+    # Wait until the message div appears on DOM
+    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div')))
+    expected_message = 'Invalid Password'
+    # Retrieve the displayed message
+    actual_messsage = driver.find_element(By.XPATH, '//*[@id="root"]/div/div').text 
+    # Check if the message is as expected
+    assert expected_message == actual_messsage, f'Error. Expected Text {expected_message}, but actual text {actual_messsage}'
 
-# Invalid Bilkent ID
-def case2():
-    username.send_keys(os.environ.get("INCORRECT_BILKENT_ID")) # Enter correct Bilkent ID
-    # Continue
+
+
+# Misisng/Empty Inputs
+def case2_1():
+    password.send_keys(os.environ.get("VALID_PASSWORD")) # Enter correct password
+    ActionChains(driver).click(submit_button).perform() # Click the submit button
+    # Wait until the message div appears on DOM
+    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div')))
+    expected_message = 'Bilkent ID cannot be blank'
+    # Retrieve the displayed message
+    actual_messsage = driver.find_element(By.XPATH, '//*[@id="root"]/div/div').text 
+    # Check if the message is as expected
+    assert expected_message == actual_messsage, f'Error. Expected Text {expected_message}, but actual text {actual_messsage}'
+
+def case2_2():
+    password.send_keys(os.environ.get("VALID_PASSWORD")) # Enter correct password
+    ActionChains(driver).click(submit_button).perform() # Click the submit button
+    # Wait until the message div appears on DOM
+    wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div')))
+    expected_message = 'Bilkent ID cannot be blank'
+    # Retrieve the displayed message
+    actual_messsage = driver.find_element(By.XPATH, '//*[@id="root"]/div/div').text 
+    # Check if the message is as expected
+    assert expected_message == actual_messsage, f'Error. Expected Text {expected_message}, but actual text {actual_messsage}'
+
 
 # Invalid Password
 def case3():
