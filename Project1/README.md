@@ -14,6 +14,7 @@
 ### Chromedriver
 
 The project uses Google Chrome as the browser, therefore ChromeDriver is required. [Download](https://chromedriver.chromium.org/downloads) the corresponding ChromeDriver binary for your Chrome version.
+WebDriverManager also downloads ChromeDriver for you.
 You should specify the path to your ChromeDriver binary to use Selenium WebDriver.
 
 ### Python3 (3.8 prefered)
