@@ -13,7 +13,8 @@ const resources = {
       'Empty Password Prompt': 'Password cannot be blank.',
       'Invalid Credential Prompt': 'Wrong password or Bilkent ID number.',
       'Change Language': 'Türkçe',
-      'Welcome': 'Welcome'
+      'Welcome': 'Welcome',
+      'Wrong Timezone': 'Wrong Timezone'
     }
   },
   tr: {
@@ -28,6 +29,7 @@ const resources = {
       'Invalid Credential Prompt': 'Şifre ya da Bilkent kimlik numarası hatalı.',
       'Change Language': 'English',
       'Welcome': 'Hoşgeldin',
+      'Wrong Timezone': 'Wrong Timezone',
       'Reset Password Page': 'Sifreyi Degistirme Sayfasi'
     }
   }
