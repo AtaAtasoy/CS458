@@ -27,7 +27,8 @@ const resources = {
       'Empty Password Prompt': 'Şifre boş bırakılamaz.',
       'Invalid Credential Prompt': 'Şifre ya da Bilkent kimlik numarası hatalı.',
       'Change Language': 'English',
-      'Welcome': 'Hoşgeldin'
+      'Welcome': 'Hoşgeldin',
+      'Reset Password Page': 'Sifreyi Degistirme Sayfasi'
     }
   }
 };
