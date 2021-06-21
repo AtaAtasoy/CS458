@@ -29,7 +29,8 @@ const resources = {
       'Invalid Credential Prompt': 'Şifre ya da Bilkent kimlik numarası hatalı.',
       'Change Language': 'English',
       'Welcome': 'Hoşgeldin',
-      'Wrong Timezone': 'Wrong Timezone'
+      'Wrong Timezone': 'Wrong Timezone',
+      'Reset Password Page': 'Sifreyi Degistirme Sayfasi'
     }
   }
 };
