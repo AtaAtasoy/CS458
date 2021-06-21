@@ -13,14 +13,17 @@ import os
 load_dotenv()
 #driver = Chrome(os.environ.get("CHROMEDRIVER_PATH")) Not required, webdriver_manager installs it automatically
 
-s=Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=s)
+#s=Service(ChromeDriverManager().install())
+#driver = webdriver.Chrome(service=s)
+driver = webdriver.Chrome(ChromeDriverManager().install())
 wait = WebDriverWait(driver, 15)
+driver.get(os.environ.get("WEBSITE"))
 driver.implicitly_wait(5)
-
 
 # Valid credentials
 def case1_1():
+    driver.get(os.environ.get("WEBSITE"))
+
     bilkent_id = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/form/input[1]')
     password = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/form/input[2]') 
     submit_button = driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/form/input[3]')
@@ -151,7 +154,7 @@ def case5():
     # Must initialize new chromedriver with new timezone
     print("Launching new chromedriver with timezone set to Europe/London")
     os.environ['TZ'] = 'Europe/London'
-    driver2 = webdriver.Chrome(service=s)
+    driver2 = webdriver.Chrome(ChromeDriverManager().install())
     wait2 = WebDriverWait(driver2, 15) 
     ########################################################
 
