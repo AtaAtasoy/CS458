@@ -9,7 +9,6 @@ import android.widget.*
 class ReviewSurveyInputsActivity : AppCompatActivity() {
 
     private lateinit var listView: ListView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_survey_inputs)
@@ -27,6 +26,8 @@ class ReviewSurveyInputsActivity : AppCompatActivity() {
 
         val surveyResult = intent.getStringExtra(EXTRA_MESSAGE)
         Log.i(surveyResult, "Result of the survey: $surveyResult")
+
+
 
     }
 }

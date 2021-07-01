@@ -11,22 +11,24 @@ import android.widget.Toast
 const val EXTRA_MESSAGE = "SURVEY_RESULT_STRING"
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), InputValidator {
 
     private lateinit var nameTv: EditText
     private lateinit var submitButton: Button
     private var errorMsg: String = ""
+    private val duration = Toast.LENGTH_SHORT
 
-    private fun isValid(fullName: String): Boolean {
+    override fun isValid(str: String): Boolean {
         // Cannot be empty
-        if (fullName.isEmpty()) {
+        if (str.isEmpty()) {
             errorMsg = "Field cannot be empty"
             return false
         }
         // Should contain alphabets and spaces only
         // Pattern forces user to start with an alphabetic character
-        if (!fullName.matches(Regex("[a-zA-Z][a-zA-Z ]+"))){
-            errorMsg = "Name should only contain alphabetic characters and spaces"
+        if (!str.matches(Regex("[a-zA-Z][a-zA-Z ]+"))){
+            errorMsg = "Name should only contain alphabetic characters and spaces and " +
+                    "start with an alphabetic character"
             return false
         }
         return true
@@ -42,15 +44,15 @@ class MainActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             val name = nameTv.text.toString()
+            Log.i(name, "Name is $name")
+
             // Validate input
             if (isValid(name)){
-                Log.i(name, "Name is $name")
                 val intent = Intent(this, CityActivity::class.java).apply {
                     putExtra(EXTRA_MESSAGE, "Name: $name")
                 }
                 startActivity(intent)
             } else {
-                val duration = Toast.LENGTH_SHORT
                 val toast = Toast.makeText(applicationContext, errorMsg, duration)
                 toast.show()
             }

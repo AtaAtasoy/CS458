@@ -6,11 +6,23 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
-class SideEffectsActivity : AppCompatActivity() {
+class SideEffectsActivity : AppCompatActivity(), InputValidator {
 
     private lateinit var sideEffectsTv: EditText
     private lateinit var finishButton: Button
+    private var errorMsg: String = ""
+    private val duration = Toast.LENGTH_SHORT
+
+    override fun isValid(str: String): Boolean {
+        // Cannot be empty
+        if (str.isEmpty()) {
+            errorMsg = "Field cannot be empty"
+            return false
+        }
+        return true
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +37,16 @@ class SideEffectsActivity : AppCompatActivity() {
             val sideEffects = sideEffectsTv.text.toString()
             val currentSurveyResult = "$message, Side Effects: $sideEffects"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
-            val intent = Intent(this, ReviewSurveyInputsActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, currentSurveyResult)
+
+            if (isValid(sideEffects)){
+                val intent = Intent(this, ReviewSurveyInputsActivity::class.java).apply {
+                    putExtra(EXTRA_MESSAGE, currentSurveyResult)
+                }
+                startActivity(intent)
+            } else {
+                val toast = Toast.makeText(applicationContext, errorMsg, duration)
+                toast.show()
             }
-            startActivity(intent)
         }
     }
 }
