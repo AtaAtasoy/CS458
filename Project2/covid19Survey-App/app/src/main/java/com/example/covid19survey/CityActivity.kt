@@ -9,8 +9,8 @@ import android.widget.EditText
 
 class CityActivity : AppCompatActivity() {
 
-    lateinit var cityTv: EditText
-    lateinit var nextButton: Button
+    private lateinit var cityTv: EditText
+    private lateinit var nextButton: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class CityActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             val city = cityTv.text.toString()
-            val currentSurveyResult = "$message, $city"
+            val currentSurveyResult = "$message, City: $city"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             val intent = Intent(this, BirthDateActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, currentSurveyResult)

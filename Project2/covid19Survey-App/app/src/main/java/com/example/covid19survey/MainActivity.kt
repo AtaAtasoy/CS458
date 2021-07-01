@@ -12,8 +12,8 @@ const val EXTRA_MESSAGE = "SURVEY_RESULT_STRING"
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var nameTv: EditText
-    lateinit var submitButton: Button
+    private lateinit var nameTv: EditText
+    private lateinit var submitButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             val name = nameTv.text.toString()
             Log.i(name, "Name is $name")
             val intent = Intent(this, CityActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, name)
+                putExtra(EXTRA_MESSAGE, "Name: $name")
             }
             startActivity(intent)
         }

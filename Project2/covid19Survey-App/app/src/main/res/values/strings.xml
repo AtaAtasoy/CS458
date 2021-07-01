@@ -9,4 +9,5 @@
     <string name="biontech">Biontech</string>
     <string name="side_effects">Side Effects</string>
     <string name="end_survey">End Survey</string>
+    <string name="submit">Submit</string>
 </resources>

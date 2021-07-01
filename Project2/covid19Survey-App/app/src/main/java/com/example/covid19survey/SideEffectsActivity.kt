@@ -9,8 +9,8 @@ import android.widget.EditText
 
 class SideEffectsActivity : AppCompatActivity() {
 
-    lateinit var sideEffectsTv: EditText
-    lateinit var finishButton: Button
+    private lateinit var sideEffectsTv: EditText
+    private lateinit var finishButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class SideEffectsActivity : AppCompatActivity() {
 
         finishButton.setOnClickListener {
             val sideEffects = sideEffectsTv.text.toString()
-            val currentSurveyResult = "$message, $sideEffects"
+            val currentSurveyResult = "$message, Side Effects: $sideEffects"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             val intent = Intent(this, ReviewSurveyInputsActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, currentSurveyResult)

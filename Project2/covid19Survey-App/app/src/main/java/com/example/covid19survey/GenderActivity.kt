@@ -9,8 +9,8 @@ import android.widget.EditText
 
 class GenderActivity : AppCompatActivity() {
 
-    lateinit var genderTv: EditText
-    lateinit var nextButton: Button
+    private lateinit var genderTv: EditText
+    private lateinit var nextButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class GenderActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             val gender = genderTv.text.toString()
-            val currentSurveyResult = "$message, $gender"
+            val currentSurveyResult = "$message, Gender: $gender"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             val intent = Intent(this, VaccineTypeActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, "$currentSurveyResult")

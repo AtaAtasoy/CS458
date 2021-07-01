@@ -9,8 +9,8 @@ import android.widget.EditText
 
 class BirthDateActivity : AppCompatActivity() {
 
-    lateinit var birthDateTv: EditText
-    lateinit var nextButton: Button
+    private lateinit var birthDateTv: EditText
+    private lateinit var nextButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +23,10 @@ class BirthDateActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             val birthDate = birthDateTv.text.toString()
-            val currentSurveyResult = "$message, $birthDate"
+            val currentSurveyResult = "$message, Date of Birth: $birthDate"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             val intent = Intent(this, GenderActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, "$currentSurveyResult")
+                putExtra(EXTRA_MESSAGE, currentSurveyResult)
             }
             startActivity(intent)
         }

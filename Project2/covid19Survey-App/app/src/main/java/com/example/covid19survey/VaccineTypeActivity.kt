@@ -10,8 +10,8 @@ import android.widget.RadioButton
 
 class VaccineTypeActivity : AppCompatActivity() {
 
-    lateinit var biontechButton: RadioButton
-    lateinit var nextButton: Button
+    private lateinit var biontechButton: RadioButton
+    private lateinit var nextButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,7 @@ class VaccineTypeActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             val vaccineType = if (biontechButton.isChecked) "Biontech" else "Sinovac"
-            val currentSurveyResult = "$message, $vaccineType"
+            val currentSurveyResult = "$message, Vaccine Type: $vaccineType"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             val intent = Intent(this, SideEffectsActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, currentSurveyResult)
