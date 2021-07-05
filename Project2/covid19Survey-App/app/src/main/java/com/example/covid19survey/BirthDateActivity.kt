@@ -41,6 +41,7 @@ class BirthDateActivity : AppCompatActivity(), InputValidator {
 
         // Day, month or year cannot be 0
         if ( day == 0 || month == 0 || year == 0) {
+            Log.i("Invalid Date 1", "$year, $month, $day")
             errorMsg = "Invalid Date"
             return false
         }
@@ -49,12 +50,14 @@ class BirthDateActivity : AppCompatActivity(), InputValidator {
         if (month == 2) {
             if (year % 4 != 0) {
                 if (day > 28) {
+                    Log.i("Invalid Date 2", "$year, $month, $day")
                     errorMsg = "Invalid Date"
                     return false
                 }
             }
             else {
                 if (day > 29) {
+                    Log.i("Invalid Date 3", "$year, $month, $day")
                     errorMsg = "Invalid Date"
                     return false
                 }
@@ -63,17 +66,20 @@ class BirthDateActivity : AppCompatActivity(), InputValidator {
 
         // Handling Day Inputs based on the length of the month
         if (LONG_MONTHS.contains(month) && day > 31) {
+            Log.i("Invalid Date 4", "$year, $month, $day")
             errorMsg = "Invalid Date"
             return false
         }
 
         if (SHORT_MONTHS.contains(month) && day > 30) {
+            Log.i("Invalid Date 5", "$year, $month, $day")
             errorMsg = "Invalid Date"
             return false
         }
 
         // Handling Month Input
         if (month > 12) {
+            Log.i("Invalid Date 6", "$year, $month, $day")
             errorMsg = "Invalid Date"
             return false
         }
@@ -82,22 +88,20 @@ class BirthDateActivity : AppCompatActivity(), InputValidator {
         val currentMonth = LocalDate.now().monthValue
         val currentDay = LocalDate.now().dayOfMonth
         if ( year > currentYear) {
+            Log.i("Invalid Date 7", "$year, $month, $day")
             errorMsg = "Invalid Date"
             return false
         }
-        else {
-            if ( month > currentMonth ){
+        if ( year == currentYear && month > currentMonth) {
+            Log.i("Invalid Date 8", "$year, $month, $day")
+            errorMsg = "Invalid Date"
+            return false
+        }
+        if ( year == currentYear && month == currentMonth && day > currentDay) {
+                Log.i("Invalid Date 9", "$year, $month, $day")
                 errorMsg = "Invalid Date"
                 return false
-            }
-            else {
-                if ( day > currentDay ){
-                    errorMsg = "Invalid Date"
-                    return false
-                }
-            }
         }
-
         return true
     }
 
