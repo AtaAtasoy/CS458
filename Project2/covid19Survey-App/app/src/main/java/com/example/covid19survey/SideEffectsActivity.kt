@@ -21,6 +21,10 @@ class SideEffectsActivity : AppCompatActivity(), InputValidator {
             errorMsg = "Field cannot be empty"
             return false
         }
+        if (str.length > 1000) {
+            errorMsg = "Field cannot contain more than 1000 characters"
+            return false
+        }
         return true
     }
 

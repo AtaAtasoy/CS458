@@ -16,7 +16,7 @@
         <activity android:name=".VaccineTypeActivity"
             android:parentActivityName=".GenderActivity"/>
         <activity android:name=".GenderActivity"
-            android:parentActivityName=".CityActivity"/>
+            android:parentActivityName=".BirthDateActivity"/>
         <activity
             android:name=".BirthDateActivity"
             android:parentActivityName=".CityActivity" />
