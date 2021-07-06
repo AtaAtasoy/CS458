@@ -27,15 +27,16 @@ $npm install
 ### Run the program
 
 Build & Launch the App from Android Studio. Choose Pixel 4a with Android v11 as your device.
+Change your directory to `tests`
 
 ```bash
-$appium # Launch the appium server
+appium # Launch the appium server
 ```
 
 ```bash
-$node index.js # Start the app from another terminal
+node index.js # Start the app from another terminal
 ```
 
 ### Notes
 
-The output of the test cases will be in `output.log`
+The output of the test cases will be in `output.log` under the `tests` directory.
