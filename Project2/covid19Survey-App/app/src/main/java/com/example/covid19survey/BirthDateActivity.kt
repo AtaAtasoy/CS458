@@ -117,7 +117,7 @@ class BirthDateActivity : AppCompatActivity(), InputValidator {
 
         nextButton.setOnClickListener {
             val birthDate = birthDateTv.text.toString()
-            val currentSurveyResult = "$message, Date of Birth: $birthDate"
+            val currentSurveyResult = "$message,Date of Birth: $birthDate"
             if (isValid(birthDate)){
                 Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
                 val intent = Intent(this, GenderActivity::class.java).apply {

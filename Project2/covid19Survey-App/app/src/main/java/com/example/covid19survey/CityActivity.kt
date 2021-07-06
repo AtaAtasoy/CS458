@@ -41,7 +41,7 @@ class CityActivity : AppCompatActivity(), InputValidator {
 
         nextButton.setOnClickListener {
             val city = cityTv.text.toString()
-            val currentSurveyResult = "$message, City: $city"
+            val currentSurveyResult = "$message,City: $city"
 
             if (isValid(city)){
                 Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")

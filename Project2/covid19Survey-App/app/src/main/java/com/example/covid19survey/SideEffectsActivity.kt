@@ -39,7 +39,7 @@ class SideEffectsActivity : AppCompatActivity(), InputValidator {
 
         finishButton.setOnClickListener {
             val sideEffects = sideEffectsTv.text.toString()
-            val currentSurveyResult = "$message, Side Effects: $sideEffects"
+            val currentSurveyResult = "$message,Side Effects: $sideEffects"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
 
             if (isValid(sideEffects)){

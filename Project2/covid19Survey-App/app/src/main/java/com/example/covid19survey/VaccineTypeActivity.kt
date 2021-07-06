@@ -24,7 +24,7 @@ class VaccineTypeActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             val vaccineType = if (biontechButton.isChecked) "Biontech" else "Sinovac"
-            val currentSurveyResult = "$message, Vaccine Type: $vaccineType"
+            val currentSurveyResult = "$message,Vaccine Type: $vaccineType"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             val intent = Intent(this, SideEffectsActivity::class.java).apply {
                 putExtra(EXTRA_MESSAGE, currentSurveyResult)

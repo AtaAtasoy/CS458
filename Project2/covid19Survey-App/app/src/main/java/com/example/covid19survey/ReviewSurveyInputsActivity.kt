@@ -8,7 +8,13 @@ import android.widget.*
 
 class ReviewSurveyInputsActivity : AppCompatActivity() {
 
-    private lateinit var listView: ListView
+    private lateinit var nameTv: TextView
+    private lateinit var cityTv: TextView
+    private lateinit var birthDateTv: TextView
+    private lateinit var genderTv: TextView
+    private lateinit var vaccineTypeTv: TextView
+    private lateinit var sideEffectsTv: TextView
+
     private lateinit var submitButton: Button
     private var message: String = "Survey Submitted Successfully!"
     private val duration = Toast.LENGTH_LONG
@@ -17,8 +23,14 @@ class ReviewSurveyInputsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review_survey_inputs)
 
-        listView = findViewById<ListView>(R.id.reviewSurveyInputsView)
         submitButton = findViewById(R.id.submitSurveyButton)
+        nameTv = findViewById(R.id.nameTextView)
+        cityTv = findViewById(R.id.cityTextView)
+        birthDateTv = findViewById(R.id.birthDateTextView)
+        genderTv = findViewById(R.id.genderTextView)
+        vaccineTypeTv = findViewById(R.id.vaccineTypeTextView)
+        sideEffectsTv = findViewById(R.id.sideEffectsTextView)
+
 
         // Survey result is in this comma separated string
         val surveyResult = intent.getStringExtra(EXTRA_MESSAGE)
@@ -27,9 +39,12 @@ class ReviewSurveyInputsActivity : AppCompatActivity() {
         val surveyResults: Array<String>
         if (surveyResult != null) {
             surveyResults = surveyResult.split(",").toTypedArray()
-            val adapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1,
-                surveyResults)
-            listView.adapter = adapter
+            nameTv.text = surveyResults[0]
+            cityTv.text = surveyResults[1]
+            birthDateTv.text = surveyResults[2]
+            genderTv.text = surveyResults[3]
+            vaccineTypeTv.text = surveyResults[4]
+            sideEffectsTv.text = surveyResults[5]
         }
 
         submitButton.setOnClickListener {

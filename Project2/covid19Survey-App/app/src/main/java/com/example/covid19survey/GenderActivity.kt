@@ -42,7 +42,7 @@ class GenderActivity : AppCompatActivity(), InputValidator {
 
         nextButton.setOnClickListener {
             val gender = genderTv.text.toString()
-            val currentSurveyResult = "$message, Gender: $gender"
+            val currentSurveyResult = "$message,Gender: $gender"
             Log.i(currentSurveyResult, "Survey data: $currentSurveyResult")
             if (isValid(gender)){
                 val intent = Intent(this, VaccineTypeActivity::class.java).apply {
