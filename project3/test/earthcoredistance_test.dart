@@ -19,5 +19,7 @@ void main() {
 
     await tester.pumpWidget(testWidget);
     await tester.pumpAndSettle();
+
+    expect(find.text("Calculate Distance to the Earth's Core"), findsOneWidget);
   });
 }
