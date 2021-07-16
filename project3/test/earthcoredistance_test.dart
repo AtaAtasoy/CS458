@@ -6,7 +6,7 @@ import 'package:project3/earthcoredistance.dart';
 /// Case 1: Earthcoredistance component should exist
 /// Case 2: There should be a text stating "Calculate Distance to the Earth's Core"
 /// Case 3: There should be a blue button with text 'Find my distance!
-/// Case 4: There should be a text field for the user to provide their coordinates 
+/// Case 4: There should be a text field for the user to provide their coordinates
 /// Case 5: There should be a text where the result will be displayed
 /// Case 6: OnButton Click the App should calculate the distance to the earth's core
 void main() {
@@ -26,6 +26,7 @@ void main() {
     expect(materialButton.color, Colors.blue);
     expect(find.text('Find my distance!'), findsOneWidget);
     expect(find.byKey(Key('icon-go')), findsOneWidget);
+    expect(find.byType(TextField), findsOneWidget);
 
     expect(find.text("Calculate Distance to the Earth's Core"), findsOneWidget);
   });
