@@ -4,7 +4,7 @@ class EarthCoreDistance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Text("Calculate Distance to the Earth's Core"),
+      Text("Calculate Distance to the Earth's Core", textDirection: TextDirection.ltr),
       ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(primary: Colors.blue),
@@ -13,7 +13,7 @@ class EarthCoreDistance extends StatelessWidget {
               Icons.map_rounded,
               key: Key('icon-go'),
             ),
-            Text('Find my distance!')
+            Text('Find my distance!', textDirection: TextDirection.ltr)
           ])),
     ]);
   }
