@@ -23,7 +23,8 @@ class EarthCoreDistance extends StatelessWidget {
                       key: Key('icon-go'),
                     ),
                     Text("Find my distance!")
-                  ]))
+                  ])),
+              Text("Distance to the Core: ")
             ]),
           ),
     );
