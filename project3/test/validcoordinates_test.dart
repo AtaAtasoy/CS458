@@ -12,7 +12,6 @@ void main() {
     await tester.pumpAndSettle();
 
     await tester.enterText(find.byType(TextField), "hi");
-
-    expect(find.byType(TextField).text, "hi");
+    expect(find.text("hi"), findsNothing);
   });
 }
