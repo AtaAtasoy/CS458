@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_3_map/screens/automatic/automaticScreen.dart';
-import 'package:project_3_map/screens/manuel/manualScreen.dart';
-import 'package:project_3_map/screens/manuelCore/earthCoreDistance.dart';
+import 'package:project_3_map/screens/manual/manualScreen.dart';
+import 'package:project_3_map/screens/manualCore/earthCoreDistance.dart';
 
 class Body extends StatelessWidget {
 

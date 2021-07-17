@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:project_3_map/screens/automatic/automaticScreen.dart';
 import 'package:project_3_map/screens/chooseScreen/chooseScreen.dart';
-import 'package:project_3_map/screens/manuel/manualScreen.dart';
+import 'package:project_3_map/screens/manual/manualScreen.dart';
 
-import 'screens/manuelCore/earthCoreDistance.dart';
+import 'screens/manualCore/earthCoreDistance.dart';
 
 
 final Map<String, WidgetBuilder> routes = {
