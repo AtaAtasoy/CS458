@@ -11,7 +11,7 @@ void main() {
     await tester.pumpWidget(testWidget);
     await tester.pumpAndSettle();
 
-    await tester.enterText(find.byType(TextField), "hi");
-    expect(find.text("hi"), findsNothing);
+    await tester.enterText(find.byKey(Key('latitude-field')), "hi");
+    expect(find.text("Invalid Input"), findsOneWidget);
   });
 }

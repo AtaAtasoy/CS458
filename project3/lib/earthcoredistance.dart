@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:project3/coordinateInputValidator.dart';
 import 'package:project3/coredistancecalculator.dart';
 
 class EarthCoreDistance extends StatefulWidget {
@@ -9,6 +10,16 @@ class EarthCoreDistance extends StatefulWidget {
 
 class _EarthCoreDistanceState extends State<EarthCoreDistance> {
   Position? _currentPosition;
+  double? _distanceToCore = 0;
+  final latitudeFieldController = TextEditingController();
+  final longtitudeFieldController = TextEditingController();
+
+  @override
+  void dispose() {
+    latitudeFieldController.dispose();
+    longtitudeFieldController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +29,15 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
         body: Column(children: [
           Text("Calculate Distance to the Earth's Core"),
           TextField(
-              obscureText: true,
+              controller: latitudeFieldController,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Enter your coordinates')),
+                  border: OutlineInputBorder(), labelText: 'Latitude')),
+          TextField(
+              controller: longtitudeFieldController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), labelText: 'Longtitude')),
           ElevatedButton(
               onPressed: () => _currentPosition = _getCurrentLocation(),
               style: ElevatedButton.styleFrom(primary: Colors.blue),
@@ -34,21 +50,29 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
               ])),
           if (_currentPosition != null)
             Text(
-                "LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"),
-          Text("Distance to the Core: "),
+                "GPS data for your coordinates: LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"),
+          Text("Distance to the Earth's Core: $_distanceToCore kilometers"),
         ]),
       ),
     );
   }
 
   _getCurrentLocation() {
-    determinePosition().then((Position pos) {
-      print("Clicked");
+    if (validateCoordinateInput(
+        latitudeFieldController.text, longtitudeFieldController.text)) {
+      double latitude = double.parse(latitudeFieldController.text);
       setState(() {
-        _currentPosition = pos;
+        _distanceToCore = calculateDistanceToCore(latitude);
       });
-    }).catchError((e) {
-      print(e);
-    });
+    } else {
+      determinePosition().then((Position pos) {
+        setState(() {
+          _distanceToCore = calculateDistanceToCore(pos.latitude);
+          _currentPosition = pos;
+        });
+      }).catchError((e) {
+        print(e);
+      });
+    }
   }
 }

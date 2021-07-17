@@ -1,11 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:project3/coredistancecalculator.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_test/flutter_test.dart';
+// import 'package:project3/earthcoredistance.dart';
 
-void main() {
-  test("testing geolocator", () async {
-    Position pos = await calculateDistanceToEarthCore();
-    expect(pos, completion(equals(Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high))));
-  });
-}
+// void main() {
+//   testWidgets("testing geolocator", (WidgetTester tester) async {
+//     final testWidget = MaterialApp(home: EarthCoreDistance());
+
+//     await tester.pumpWidget(testWidget);
+//     await tester.pumpAndSettle();
+
+//     final buttonMaterial = find.descendant(
+//       of: find.byType(ElevatedButton),
+//       matching: find.byType(Material),
+//     );
+
+//     await tester.tap(find.byType(ElevatedButton));
+ 
+
+//     expect(buttonMaterial, findsOneWidget);
+//     expect(find.textContaining("LAT: "), findsOneWidget);
+//   });
+// }
