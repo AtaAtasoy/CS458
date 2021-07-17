@@ -65,7 +65,7 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
   _getCurrentLocation() {
     var latitudeInput = latitudeFieldController.text;
     var longtitudeInput = longtitudeFieldController.text;
-    print(latitudeInput + "," + longtitudeInput);
+    print("The location input: " + latitudeInput + "," + longtitudeInput);
 
     // If the input field is empty get the gps location on click
     if (latitudeInput == "" && longtitudeInput == "") {
