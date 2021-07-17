@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:project3/coredistancecalculator.dart';
 
-class EarthCoreDistance extends StatelessWidget {
-  const EarthCoreDistance({Key? key , this.onPressed }) : super(key: key);
+class EarthCoreDistance extends StatefulWidget {
+  @override
+  _EarthCoreDistanceState createState() => _EarthCoreDistanceState();
+}
 
-  final VoidCallback? onPressed;
+class _EarthCoreDistanceState extends State<EarthCoreDistance> {
+  Position? _currentPosition;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class EarthCoreDistance extends StatelessWidget {
                   border: OutlineInputBorder(),
                   labelText: 'Enter your coordinates')),
           ElevatedButton(
-              onPressed: () => onPressed?.call(),
+              onPressed: () => _currentPosition = _getCurrentLocation(),
               style: ElevatedButton.styleFrom(primary: Colors.blue),
               child: Row(children: [
                 Icon(
@@ -27,9 +32,23 @@ class EarthCoreDistance extends StatelessWidget {
                 ),
                 Text("Find my distance!")
               ])),
-          Text("Distance to the Core: ")
+          if (_currentPosition != null)
+            Text(
+                "LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"),
+          Text("Distance to the Core: "),
         ]),
       ),
     );
+  }
+
+  _getCurrentLocation() {
+    determinePosition().then((Position pos) {
+      print("Clicked");
+      setState(() {
+        _currentPosition = pos;
+      });
+    }).catchError((e) {
+      print(e);
+    });
   }
 }
