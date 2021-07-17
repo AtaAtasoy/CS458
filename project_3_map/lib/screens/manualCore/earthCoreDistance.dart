@@ -69,7 +69,9 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
 
     // If the input field is empty get the gps location on click
     if (latitudeInput == "" && longtitudeInput == "") {
+      print("Finding location from the GPS...");
       determinePosition().then((Position pos) {
+        print("The GPS Location: " + pos.toString());
         setState(() {
           invalidInput = false;
           _distanceToCore = calculateDistanceToCore(pos.latitude);

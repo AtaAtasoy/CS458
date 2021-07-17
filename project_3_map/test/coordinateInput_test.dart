@@ -41,7 +41,7 @@ void test2() {
 }
 
 void test3() {
-  testWidgets('special character coordinate inputs',
+  testWidgets('valid coordinate inputs',
       (WidgetTester tester) async {
     final testWidget = MaterialApp(
       home: EarthCoreDistance(),
@@ -50,9 +50,26 @@ void test3() {
     await tester.pumpWidget(testWidget);
     await tester.pumpAndSettle();
 
+    await tester.enterText(find.byKey(Key('latitude-field')), "39");
+    await tester.enterText(find.byKey(Key('longtitude-field')), "32");
     await tester.tap(find.byType(ElevatedButton));
     await tester.pump(new Duration(seconds: 5));
 
-    expect(find.textContaining("LAT: "), findsOneWidget);
+    expect(find.textContaining("kilometers"), findsOneWidget);
   });
 }
+
+
+// This test case does not run correctly since there isn't a way to grant locaiton permission in a test
+// void test4() {
+//   testWidgets('Auto Finding Location Case', (WidgetTester tester) async {
+//     final testWidget = MaterialApp(
+//       home: EarthCoreDistance(),
+//     );
+//     await tester.pumpWidget(testWidget);
+//     await tester.pumpAndSettle();
+//     await tester.tap(find.byType(ElevatedButton));
+//     await tester.pump(new Duration(seconds: 5));
+//     expect(find.textContaining("GPS data: "), findsOneWidget);
+//   });
+// }
