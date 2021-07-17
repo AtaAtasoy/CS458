@@ -26,10 +26,11 @@ void main() {
     expect(materialButton.color, Colors.blue);
     expect(find.text('Find my distance!'), findsOneWidget);
     expect(find.byKey(Key('icon-go')), findsOneWidget);
-    expect(find.byType(TextField), findsOneWidget);
+    expect(find.byKey(Key('latitude-field')), findsOneWidget);
+    expect(find.byKey(Key('longtitude-field')), findsOneWidget);
 
-    expect(find.text("Calculate Distance to the Earth's Core"), findsOneWidget);
-    expect(find.textContaining("Distance to the Core: "), findsOneWidget);
+    // expect(find.text("Calculate Distance to the Earth's Core"), findsOneWidget);
+    expect(find.textContaining("0.0 kilometers"), findsOneWidget);
   });
 }
 
