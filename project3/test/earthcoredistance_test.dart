@@ -29,5 +29,6 @@ void main() {
     expect(find.byType(TextField), findsOneWidget);
 
     expect(find.text("Calculate Distance to the Earth's Core"), findsOneWidget);
+    expect(find.textContaining("Distance to the Core: "), findsOneWidget);
   });
 }
