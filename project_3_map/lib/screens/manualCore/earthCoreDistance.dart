@@ -80,6 +80,7 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
       });
       // display error message ın invalid input
     } else if (!validateCoordinateInput(latitudeInput, longtitudeInput)) {
+      print("Invalid Input");
       setState(() {
         invalidInput = true;
       });

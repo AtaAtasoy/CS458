@@ -14,6 +14,7 @@ void main() {
 
     await tester.enterText(find.byKey(Key('latitude-field')), "hi");
     await tester.tap(find.byType(ElevatedButton));
+    await tester.pump(new Duration(seconds: 5));
 
     expect(find.text("Invalid Input"), findsOneWidget);
   });
