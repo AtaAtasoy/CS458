@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_3_map/screens/automatic/automaticScreen.dart';
-import 'package:project_3_map/screens/manuel/manuelScreen.dart';
-import 'package:project_3_map/screens/manuelCore/earthcoredistance.dart';
+import 'package:project_3_map/screens/manuel/manualScreen.dart';
+import 'package:project_3_map/screens/manuelCore/earthCoreDistance.dart';
 
 class Body extends StatelessWidget {
 
@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
 
           TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, ManuelScreen.routeName);
+                Navigator.pushNamed(context, ManualScreen.routeName);
               },
               child: Text("Show City",
               style: TextStyle(

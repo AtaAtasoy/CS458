@@ -3,7 +3,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:project_3_map/coordinateInputValidator.dart';
 import 'package:project_3_map/coredistancecalculator.dart';
 
-
 class EarthCoreDistance extends StatefulWidget {
   static String routeName = "/manuelCore";
   @override
@@ -26,45 +25,40 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      
-      title: 'EarthCoreDistance',
-      home: Scaffold(
-        appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: Text("Calculate Distance to the Earth's Core"),
-        
       ),
-        body: Column(children: [
-          SizedBox(height: 40.0),
-          TextField(
-              controller: latitudeFieldController,
-              keyboardType: TextInputType.number,
-              key: Key('latitude-field'),
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Latitude')),
-          TextField(
-              controller: longtitudeFieldController,
-              keyboardType: TextInputType.number,
-              key: Key('longtitude-field'),
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Longtitude')),
-          ElevatedButton(
-              onPressed: () => _currentPosition = _getCurrentLocation(),
-              style: ElevatedButton.styleFrom(primary: Colors.blue),
-              child: Row(children: [
-                Icon(
-                  Icons.map_rounded,
-                  key: Key('icon-go'),
-                ),
-                Text("Find my distance!")
-              ])),
-          if (invalidInput) Text("Invalid Input"),
-          if (_currentPosition != null)
-            Text(
-                "GPS data for your coordinates: LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"),
-          Text("Distance to the Earth's Core: $_distanceToCore kilometers"),
-        ]),
-      ),
+      body: Column(children: [
+        SizedBox(height: 40.0),
+        TextField(
+            controller: latitudeFieldController,
+            keyboardType: TextInputType.number,
+            key: Key('latitude-field'),
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), labelText: 'Latitude')),
+        TextField(
+            controller: longtitudeFieldController,
+            keyboardType: TextInputType.number,
+            key: Key('longtitude-field'),
+            decoration: InputDecoration(
+                border: OutlineInputBorder(), labelText: 'Longtitude')),
+        ElevatedButton(
+            onPressed: () => _currentPosition = _getCurrentLocation(),
+            style: ElevatedButton.styleFrom(primary: Colors.blue),
+            child: Row(children: [
+              Icon(
+                Icons.map_rounded,
+                key: Key('icon-go'),
+              ),
+              Text("Find my distance!")
+            ])),
+        if (invalidInput) Text("Invalid Input"),
+        if (_currentPosition != null)
+          Text(
+              "GPS data for your coordinates: LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"),
+        Text("Distance to the Earth's Core: $_distanceToCore kilometers"),
+      ]),
     );
   }
 

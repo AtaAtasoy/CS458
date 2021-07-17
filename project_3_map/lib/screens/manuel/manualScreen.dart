@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
-class  ManuelScreen extends StatelessWidget {
-
+class  ManualScreen extends StatefulWidget {
   static String routeName = "/manuel";
+  @override
+    _ManualScreenState createState() => _ManualScreenState();
+}
+
+class _ManualScreenState extends State<ManualScreen> {
   final latitudeFieldController = TextEditingController();
   final longtitudeFieldController = TextEditingController();
 
@@ -38,11 +42,7 @@ class  ManuelScreen extends StatelessWidget {
                   SizedBox(height: 30.0),
                   
                   Text("Your city:") ]
-        
-        
       ),
-
-      
     ),
     );
   }
