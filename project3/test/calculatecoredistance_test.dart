@@ -17,6 +17,6 @@ void main() {
     await tester.tap(find.byType(ElevatedButton));
     await tester.pumpAndSettle();
 
-    expect(distance, distance + 1);
+    expect(distance, 1);
   });
 }
