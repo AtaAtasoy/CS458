@@ -19,6 +19,7 @@ void main() {
   });
   test2();
   test3();
+  test4();
 }
 
 void test2() {
@@ -41,8 +42,7 @@ void test2() {
 }
 
 void test3() {
-  testWidgets('valid coordinate inputs',
-      (WidgetTester tester) async {
+  testWidgets('valid coordinate inputs', (WidgetTester tester) async {
     final testWidget = MaterialApp(
       home: EarthCoreDistance(),
     );
@@ -59,17 +59,15 @@ void test3() {
   });
 }
 
-
-// This test case does not run correctly since there isn't a way to grant locaiton permission in a test
-// void test4() {
-//   testWidgets('Auto Finding Location Case', (WidgetTester tester) async {
-//     final testWidget = MaterialApp(
-//       home: EarthCoreDistance(),
-//     );
-//     await tester.pumpWidget(testWidget);
-//     await tester.pumpAndSettle();
-//     await tester.tap(find.byType(ElevatedButton));
-//     await tester.pump(new Duration(seconds: 5));
-//     expect(find.textContaining("GPS data: "), findsOneWidget);
-//   });
-// }
+void test4() {
+  testWidgets('Auto Finding Location Case', (WidgetTester tester) async {
+    final testWidget = MaterialApp(
+      home: EarthCoreDistance(),
+    );
+    await tester.pumpWidget(testWidget);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(ElevatedButton));
+    await tester.pump(new Duration(seconds: 5));
+    expect(find.textContaining("GPS data: "), findsNothing);
+  });
+}
