@@ -3,23 +3,29 @@ import 'dart:math';
 import 'package:geolocator/geolocator.dart';
 import 'package:vector_math/vector_math.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Determine the current position of the device.
 ///
 /// When the location services are not enabled or permissions
 /// are denied the `Future` will return an error.
 Future<Map<String, double>?> determinePosition() async {
-  String url =
-      "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBYSadq8OG4WPYjTh7QZhQ6PCI_On0OoCQ";
-  http.Response response = await http.post(Uri.parse(url));
-  print(response.body);
-  if (response.statusCode == 200) {
-    String jsonData = response.body;
-    var decodeData = jsonDecode(jsonData);
-    double lat = decodeData["location"]["lat"];
-    double lng = decodeData["location"]["lng"];
+  await dotenv.load(fileName: ".env");
+  String? GOOGLE_API_KEY = dotenv.env["GOOGLE_API_KEY"];
+  if (GOOGLE_API_KEY != null) {
+    String url =
+        "https://www.googleapis.com/geolocation/v1/geolocate?key=" + GOOGLE_API_KEY;
+    print("URL : " + url);
+    http.Response response = await http.post(Uri.parse(url));
+    print(response.body);
+    if (response.statusCode == 200) {
+      String jsonData = response.body;
+      var decodeData = jsonDecode(jsonData);
+      double lat = decodeData["location"]["lat"];
+      double lng = decodeData["location"]["lng"];
 
-    return {"lat": lat, "lng": lng};
+      return {"lat": lat, "lng": lng};
+    }
   } else {
     print("Error getting position");
     throw Exception("Could not get position");
