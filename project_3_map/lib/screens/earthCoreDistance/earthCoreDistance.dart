@@ -10,7 +10,8 @@ class EarthCoreDistance extends StatefulWidget {
 }
 
 class _EarthCoreDistanceState extends State<EarthCoreDistance> {
-  Position? _currentPosition;
+  double? _currentLat;
+  double? _currentLng;
   double? _distanceToCore = 0;
   final latitudeFieldController = TextEditingController();
   final longtitudeFieldController = TextEditingController();
@@ -44,7 +45,7 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
             decoration: InputDecoration(
                 border: OutlineInputBorder(), labelText: 'Longtitude')),
         ElevatedButton(
-            onPressed: () => _currentPosition = _getCurrentLocation(),
+            onPressed: () => _getCurrentLocation(),
             style: ElevatedButton.styleFrom(primary: Colors.blue),
             child: Row(children: [
               Icon(
@@ -54,9 +55,9 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
               Text("Find my distance!")
             ])),
         if (invalidInput) Text("Invalid Input"),
-        if (_currentPosition != null)
+        if (_currentLat != null)
           Text(
-              "GPS data for your coordinates: LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"),
+              "GPS data for your coordinates: LAT: $_currentLat, LNG: $_currentLng"),
         Text("Distance to the Earth's Core: $_distanceToCore kilometers"),
       ]),
     );
@@ -70,12 +71,16 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
     // If the input field is empty get the gps location on click
     if (latitudeInput == "" && longtitudeInput == "") {
       print("Finding location from the GPS...");
-      determinePosition().then((Position pos) {
-        print("The GPS Location: " + pos.toString());
+      determinePosition().then((Map<String, double>? pos) {
+        print("The GPS Location: " +
+            pos!["lat"].toString() +
+            ", " +
+            pos["lng"].toString());
         setState(() {
           invalidInput = false;
-          _distanceToCore = calculateDistanceToCore(pos.latitude);
-          _currentPosition = pos;
+          _distanceToCore = calculateDistanceToCore(pos["lat"]);
+          _currentLat = pos["lat"];
+          _currentLng = pos["lng"];
         });
       }).catchError((e) {
         print(e);

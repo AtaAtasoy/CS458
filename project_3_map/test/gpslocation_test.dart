@@ -23,13 +23,5 @@ void main() {
 
       expect(await determinePosition(), isA<Map<String, double>>());
     });
-
-    test('throws an exception if the htttp call completes with an error', () {
-      final client = MockClient();
-      when(client.get(Uri.parse("https://www.googleapis.com/geolocation/v1/geolocate?key=")))
-          .thenAnswer((_) async => http.Response('Not Found', 404));
-
-      expect(determinePosition(), throwsException);
-    });
   });
 }

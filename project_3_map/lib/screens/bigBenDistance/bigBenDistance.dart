@@ -1,4 +1,3 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:project_3_map/coredistancecalculator.dart';
 
@@ -10,7 +9,8 @@ class BigBenDistance extends StatefulWidget {
 
 class _BigBenScreenState extends State<BigBenDistance> {
   var locationMessage = "";
-  Position? _currentPosition;
+  double? _currentLat;
+  double? _currentLng;
   double? _distanceToBigBen;
 
   @override
@@ -39,14 +39,14 @@ class _BigBenScreenState extends State<BigBenDistance> {
                   style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () => _currentPosition = _getCurrentLocation(),
+                  onPressed: () => _getCurrentLocation(),
                   child:
                       Text("Calculate", style: TextStyle(color: Colors.blue)),
                 ),
                 SizedBox(height: 15.0),
                 if (_distanceToBigBen != null)
                   Text(
-                      "The distance to Big Ben is : ${_distanceToBigBen} meters")
+                      "The distance to Big Ben is : $_distanceToBigBen meters")
               ],
             ),
           ),
@@ -55,15 +55,18 @@ class _BigBenScreenState extends State<BigBenDistance> {
 
   _getCurrentLocation() {
     print("Determining the Location from the GPS!");
-    determinePosition().then((Position pos) {
-      print("The GPS Location: " + pos.toString());
-      setState(() {
-        _distanceToBigBen =
-            calculateDistanceToBigBen(pos.latitude, pos.longitude);
-        _currentPosition = pos;
+      determinePosition().then((Map<String, double>? pos) {
+        print("The GPS Location: " +
+            pos!["lat"].toString() +
+            ", " +
+            pos["lng"].toString());
+        setState(() {
+          _distanceToBigBen = calculateDistanceToBigBen(pos["lat"], pos["lng"]);
+          _currentLat = pos["lat"];
+          _currentLng = pos["lng"];
+        });
+      }).catchError((e) {
+        print(e);
       });
-    }).catchError((e) {
-      print(e);
-    });
   }
 }
