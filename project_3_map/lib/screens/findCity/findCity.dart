@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:project_3_map/coordinateInputValidator.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class FindCity extends StatefulWidget {
   static String routeName = "/findcitydistance";
@@ -64,6 +65,8 @@ class _FindCityState extends State<FindCity> {
   }
 
   _getAddressFromLatLng() async {
+    await dotenv.load(fileName: ".env");
+    String? GOOGLE_API_KEY = dotenv.env["GOOGLE_API_KEY"];
     var latitudeInput = latitudeFieldController.text;
     var longtitudeInput = longitudeFieldController.text;
     if (!validateCoordinateInput(latitudeInput, longtitudeInput)) {
@@ -75,10 +78,10 @@ class _FindCityState extends State<FindCity> {
       // calculate distance with user data
       double latitude = double.parse(latitudeFieldController.text);
       double longitude = double.parse(longitudeFieldController.text);
-      String url =
-          "https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=AIzaSyBYSadq8OG4WPYjTh7QZhQ6PCI_On0OoCQ";
-      http.Response response = await http.get(Uri.parse(url));
-
+      if (GOOGLE_API_KEY != null){
+        String url =
+            "https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=" + GOOGLE_API_KEY;
+        http.Response response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         String jsonData = response.body;
         var decodeData = jsonDecode(jsonData);
@@ -89,6 +92,7 @@ class _FindCityState extends State<FindCity> {
           invalidInput = false;
           _currentAddress = address;
         });
+      }
       } else {
         setState(() {
           invalidInput = false;
