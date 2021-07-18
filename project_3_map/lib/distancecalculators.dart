@@ -31,8 +31,8 @@ Future<Map<String, double>?> determinePosition() async {
 double calculateDistanceToCore(double? latitude) {
   if (latitude != null) {
     print(latitude);
-    double RADIUS_AT_EQUATOR = 6378.137;
-    double RADIUS_AT_POLE = 6356.752;
+    const double RADIUS_AT_EQUATOR = 6378.137;
+    const double RADIUS_AT_POLE = 6356.752;
 
     final t1 = pow(pow(RADIUS_AT_EQUATOR, 2) * cos(radians(latitude)), 2) +
         pow(pow(RADIUS_AT_POLE, 2) * sin(radians(latitude)), 2);

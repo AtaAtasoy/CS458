@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:project_3_map/coordinateInputValidator.dart';
-import 'package:project_3_map/coredistancecalculator.dart';
+import 'package:project_3_map/distancecalculators.dart';
 
 class EarthCoreDistance extends StatefulWidget {
   static String routeName = "/earthcoredistance";
