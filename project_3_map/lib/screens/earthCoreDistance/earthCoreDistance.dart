@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:project_3_map/coordinateInputValidator.dart';
 import 'package:project_3_map/distancecalculators.dart';
 
@@ -14,13 +13,13 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
   double? _currentLng;
   double? _distanceToCore = 0;
   final latitudeFieldController = TextEditingController();
-  final longtitudeFieldController = TextEditingController();
+  final longitudeFieldController = TextEditingController();
   bool invalidInput = false;
 
   @override
   void dispose() {
     latitudeFieldController.dispose();
-    longtitudeFieldController.dispose();
+    longitudeFieldController.dispose();
     super.dispose();
   }
 
@@ -39,11 +38,11 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
             decoration: InputDecoration(
                 border: OutlineInputBorder(), labelText: 'Latitude')),
         TextField(
-            controller: longtitudeFieldController,
+            controller: longitudeFieldController,
             keyboardType: TextInputType.number,
             key: Key('longtitude-field'),
             decoration: InputDecoration(
-                border: OutlineInputBorder(), labelText: 'Longtitude')),
+                border: OutlineInputBorder(), labelText: 'Longitude')),
         ElevatedButton(
             onPressed: () => _getCurrentLocation(),
             style: ElevatedButton.styleFrom(primary: Colors.blue),
@@ -65,7 +64,7 @@ class _EarthCoreDistanceState extends State<EarthCoreDistance> {
 
   _getCurrentLocation() {
     var latitudeInput = latitudeFieldController.text;
-    var longtitudeInput = longtitudeFieldController.text;
+    var longtitudeInput = longitudeFieldController.text;
     print("The location input: " + latitudeInput + "," + longtitudeInput);
 
     // If the input field is empty get the gps location on click

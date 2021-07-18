@@ -12,13 +12,13 @@ class FindCity extends StatefulWidget {
 class _FindCityState extends State<FindCity> {
   String? _currentAddress;
   final latitudeFieldController = TextEditingController();
-  final longtitudeFieldController = TextEditingController();
+  final longitudeFieldController = TextEditingController();
   bool invalidInput = false;
 
   @override
   void dispose() {
     latitudeFieldController.dispose();
-    longtitudeFieldController.dispose();
+    longitudeFieldController.dispose();
     super.dispose();
   }
 
@@ -41,11 +41,11 @@ class _FindCityState extends State<FindCity> {
                   border: OutlineInputBorder(), labelText: 'Latitude')),
           SizedBox(height: 30.0),
           TextField(
-              controller: longtitudeFieldController,
+              controller: longitudeFieldController,
               keyboardType: TextInputType.number,
               key: Key('longtitude-field'),
               decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Longtitude')),
+                  border: OutlineInputBorder(), labelText: 'Longitude')),
           SizedBox(height: 30.0),
           ElevatedButton(
               onPressed: () => _getAddressFromLatLng(),
@@ -57,7 +57,7 @@ class _FindCityState extends State<FindCity> {
                 Text("Find my city!")
               ])),
           if (invalidInput) Text("Invalid Input"),
-          if (_currentAddress != null) Text("Your city: ${_currentAddress}"),
+          if (_currentAddress != null) Text("Your city: $_currentAddress"),
         ],
       ),
     );
@@ -65,7 +65,7 @@ class _FindCityState extends State<FindCity> {
 
   _getAddressFromLatLng() async {
     var latitudeInput = latitudeFieldController.text;
-    var longtitudeInput = longtitudeFieldController.text;
+    var longtitudeInput = longitudeFieldController.text;
     if (!validateCoordinateInput(latitudeInput, longtitudeInput)) {
       print("Invalid Input");
       setState(() {
@@ -74,9 +74,9 @@ class _FindCityState extends State<FindCity> {
     } else {
       // calculate distance with user data
       double latitude = double.parse(latitudeFieldController.text);
-      double longitude = double.parse(longtitudeFieldController.text);
+      double longitude = double.parse(longitudeFieldController.text);
       String url =
-          "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyBYSadq8OG4WPYjTh7QZhQ6PCI_On0OoCQ";
+          "https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=AIzaSyBYSadq8OG4WPYjTh7QZhQ6PCI_On0OoCQ";
       http.Response response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {

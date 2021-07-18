@@ -9,8 +9,6 @@ class BigBenDistance extends StatefulWidget {
 
 class _BigBenScreenState extends State<BigBenDistance> {
   var locationMessage = "";
-  double? _currentLat;
-  double? _currentLng;
   double? _distanceToBigBen;
 
   @override
@@ -62,8 +60,6 @@ class _BigBenScreenState extends State<BigBenDistance> {
             pos["lng"].toString());
         setState(() {
           _distanceToBigBen = calculateDistanceToBigBen(pos["lat"], pos["lng"]);
-          _currentLat = pos["lat"];
-          _currentLng = pos["lng"];
         });
       }).catchError((e) {
         print(e);
