@@ -1,18 +1,15 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-//import 'package:geolocator/geolocator.dart';
 import 'package:project_3_map/coordinateInputValidator.dart';
 import 'package:http/http.dart' as http;
 
-class ManualScreen extends StatefulWidget {
+class FindCity extends StatefulWidget {
   static String routeName = "/manuel";
   @override
-  _ManualScreenState createState() => _ManualScreenState();
+  _FindCityState createState() => _FindCityState();
 }
 
-class _ManualScreenState extends State<ManualScreen> {
+class _FindCityState extends State<FindCity> {
   String? _currentAddress;
   final latitudeFieldController = TextEditingController();
   final longtitudeFieldController = TextEditingController();
@@ -85,8 +82,9 @@ class _ManualScreenState extends State<ManualScreen> {
       if (response.statusCode == 200) {
         String jsonData = response.body;
         var decodeData = jsonDecode(jsonData);
-        print(decodeData);
-        String address = decodeData["results"][0]["formated_address"];
+        print(decodeData["results"][0]["address_components"][1]["long_name"]);
+        String address =
+            decodeData["results"][0]["address_components"][1]["long_name"];
         setState(() {
           invalidInput = false;
           _currentAddress = address;

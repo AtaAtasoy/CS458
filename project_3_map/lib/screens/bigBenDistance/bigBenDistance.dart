@@ -2,13 +2,13 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:project_3_map/coredistancecalculator.dart';
 
-class AutomaticScreen extends StatefulWidget {
+class BigBenDistance extends StatefulWidget {
   static String routeName = "/automatic";
   @override
-  _AutomaticScreenState createState() => _AutomaticScreenState();
+  _BigBenScreenState createState() => _BigBenScreenState();
 }
 
-class _AutomaticScreenState extends State<AutomaticScreen> {
+class _BigBenScreenState extends State<BigBenDistance> {
   var locationMessage = "";
   Position? _currentPosition;
   double? _distanceToBigBen;
@@ -35,7 +35,7 @@ class _AutomaticScreenState extends State<AutomaticScreen> {
                   height: 10.0,
                 ),
                 Text(
-                  "Calculate the distance from your location to Big Ben",
+                  "Calculate the distance from your location to the Big Ben",
                   style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
                 ),
                 TextButton(

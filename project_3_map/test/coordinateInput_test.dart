@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:project_3_map/screens/manualCore/earthCoreDistance.dart';
-
+import 'package:project_3_map/screens/earthCoreDistance/earthCoreDistance.dart';
 void main() {
   testWidgets('alphabetic coordinate inputs', (WidgetTester tester) async {
     final testWidget = MaterialApp(

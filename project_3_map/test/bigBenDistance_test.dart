@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:project_3_map/screens/automatic/automaticScreen.dart';
+import 'package:project_3_map/screens/bigBenDistance/bigBenDistance.dart';
 
 /// TDD Cases
 /// Case 1: AutomaticScreen component should exist
@@ -12,7 +12,7 @@ import 'package:project_3_map/screens/automatic/automaticScreen.dart';
 void main() {
   testWidgets('automaticscreen page is created', (WidgetTester tester) async {
     final testWidget = MaterialApp(
-      home: AutomaticScreen(),
+      home: BigBenDistance(),
     );
 
     await tester.pumpWidget(testWidget);
