@@ -24,7 +24,7 @@ void main() {
     final materialButton = tester.widget<Material>(buttonMaterial);
 
     expect(materialButton.color, Colors.blue);
-    expect(find.text('Calculate'), findsOneWidget);
+    expect(find.text("Calculate"), findsOneWidget);
 
     // expect(find.text("Calculate Distance to the Earth's Core"), findsOneWidget);
   });
