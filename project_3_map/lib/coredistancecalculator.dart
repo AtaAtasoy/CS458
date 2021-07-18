@@ -60,3 +60,14 @@ double calculateDistanceToCore(double latitude) {
   print(result);
   return result;
 }
+
+double calculateDistanceToBigBen(double latitude, double longitude) {
+  print(latitude);
+  double bigBenLat = 51.510357;
+  double bigBenLong = -0.116773;
+
+  var result =
+      Geolocator.distanceBetween(latitude, longitude, bigBenLat, bigBenLong);
+  print(result);
+  return result;
+}

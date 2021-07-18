@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_3_map/screens/chooseScreen/body.dart';
 
-
 class ChooseScreen extends StatelessWidget {
-
   static String routeName = "/choose";
 
   @override
@@ -11,11 +9,9 @@ class ChooseScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Project 3'),
-        
-        
       ),
-      body: Body(
-        
+      body: Center(
+        child: Body(),
       ),
     );
   }
