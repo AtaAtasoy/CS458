@@ -12,3 +12,8 @@ Clone the code
 flutter pub get
 flutter run
 ```
+
+Running the tests
+```bash
+flutter test
+
