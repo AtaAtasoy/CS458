@@ -4,7 +4,7 @@ import 'package:project_3_map/coordinateInputValidator.dart';
 import 'package:http/http.dart' as http;
 
 class FindCity extends StatefulWidget {
-  static String routeName = "/manuel";
+  static String routeName = "/findcitydistance";
   @override
   _FindCityState createState() => _FindCityState();
 }
@@ -26,7 +26,7 @@ class _FindCityState extends State<FindCity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Learn The City of A Cordinate"),
+        title: Text("Find the City by Coordinates"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

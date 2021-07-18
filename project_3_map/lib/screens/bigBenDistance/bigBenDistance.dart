@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_3_map/coredistancecalculator.dart';
 
 class BigBenDistance extends StatefulWidget {
-  static String routeName = "/automatic";
+  static String routeName = "/bigbendistance";
   @override
   _BigBenScreenState createState() => _BigBenScreenState();
 }

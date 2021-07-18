@@ -4,7 +4,7 @@ import 'package:project_3_map/coordinateInputValidator.dart';
 import 'package:project_3_map/coredistancecalculator.dart';
 
 class EarthCoreDistance extends StatefulWidget {
-  static String routeName = "/manuelCore";
+  static String routeName = "/earthcoredistance";
   @override
   _EarthCoreDistanceState createState() => _EarthCoreDistanceState();
 }
