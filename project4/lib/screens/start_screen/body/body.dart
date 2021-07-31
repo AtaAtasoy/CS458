@@ -9,47 +9,45 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: (20)),
+          padding: EdgeInsets.symmetric(horizontal: (20)),
           child: SingleChildScrollView(
             child: Column(
               children: [
-
-                SizedBox(height: 150,),
+                SizedBox(
+                  height: 150,
+                ),
                 ElevatedButton(
-                  onPressed: () {Navigator.pushNamed(context, SignInScreen.routeName);}, 
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF00a79B),
-                    textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-        
-                  ),),
-                  child: Text('Sign In')),
-
-                  SizedBox(height: 50,),
-
-                  ElevatedButton(
-                  onPressed: () {Navigator.pushNamed(context, SignUpScreen.routeName);}, 
-
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF00a79B),
-                    textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 40,
-        
-                  ),),
-                  child: Text('Sign Up')),
-
-                
-             
-                
-                
-                
+                    onPressed: () {
+                      Navigator.pushNamed(context, SignInScreen.routeName);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF00a79B),
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 40,
+                      ),
+                    ),
+                    child: Text('Sign In')),
+                SizedBox(
+                  height: 50,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, SignUpScreen.routeName);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFF00a79B),
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontSize: 40,
+                      ),
+                    ),
+                    child: Text('Sign Up')),
               ],
             ),
           ),
         ),
       ),
     );
-  } }
+  }
+}

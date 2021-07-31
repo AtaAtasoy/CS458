@@ -1,4 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:project4/screens/sign_in/sign_in_screen.dart';
+import 'package:project4/utils/authentication.dart';
 
 class SignUpScreen extends StatefulWidget {
   static String routeName = "/sign_up";
@@ -7,12 +11,17 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  bool validCredentials = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF00a79B),
-        title: Text("Sign In"),
+        title: Text("Sign Up"),
       ),
       backgroundColor: Colors.white,
       body: ListView(
@@ -29,6 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          controller: usernameController,
                           decoration: InputDecoration(hintText: 'Username'),
                         )))
               ],
@@ -43,6 +53,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          obscureText: true,
+                          controller: passwordController,
                           decoration: InputDecoration(hintText: 'Password'),
                         )))
               ],
@@ -57,6 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          controller: emailController,
                           decoration: InputDecoration(hintText: 'Email'),
                         )))
               ],
@@ -94,7 +107,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'Home');
+                    validCredentials = signUp(usernameController.text,
+                        passwordController.text, emailController.text);
+                    if (validCredentials) {
+                      Navigator.pushNamed(context, SignInScreen.routeName);
+                    } else {
+                      print(validCredentials);
+                      Text("Invalid Credentials");
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromRGBO(0, 167, 155, 1.0)),

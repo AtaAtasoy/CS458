@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project4/screens/form_screen/form_screen.dart';
+import 'package:project4/utils/authentication.dart';
 
 class SignInScreen extends StatefulWidget {
   static String routeName = "/sign_in";
@@ -8,13 +9,17 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  bool validCredentials = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF00a79B),
         title: Text("Sign In"),
-      ) ,
+      ),
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
@@ -22,7 +27,7 @@ class _SignInScreenState extends State<SignInScreen> {
             height: 300,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    fit: BoxFit.cover, image: AssetImage('lib\asset\img\app.png'))),
+                    image: AssetImage('virus.jpeg'))),
           ),
           SizedBox(
             height: 20,
@@ -37,6 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
                           decoration: InputDecoration(hintText: 'Username'),
+                          controller: usernameController,
                         )))
               ],
             ),
@@ -50,6 +56,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          obscureText: true,
+                          controller: passwordController,
                           decoration: InputDecoration(hintText: 'Password'),
                         ))),
               ],
@@ -65,10 +73,15 @@ class _SignInScreenState extends State<SignInScreen> {
               child: Container(
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {Navigator.pushNamed(context, FormScreen.routeName);},
+                  onPressed: () {
+                    validCredentials = signIn(
+                        usernameController.text, passwordController.text);
+                    if (validCredentials) {
+                      Navigator.pushNamed(context, FormScreen.routeName);
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(0, 167, 155, 1.0)
-                  ),
+                      primary: Color.fromRGBO(0, 167, 155, 1.0)),
                   child: Text(
                     'SIGN IN',
                     style: TextStyle(
@@ -84,10 +97,10 @@ class _SignInScreenState extends State<SignInScreen> {
             height: 20,
           ),
           InkWell(
-            onTap: (){
+            onTap: () {
               Navigator.pushNamed(context, 'SignUp');
             },
-                      child: Center(
+            child: Center(
               child: RichText(
                 text: TextSpan(
                     text: 'Don\'t have an account?',
@@ -101,7 +114,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     ]),
               ),
             ),
-          )
+          ),
+          if (!validCredentials)
+            Text("Invalid Credentials")
         ],
       ),
     );
