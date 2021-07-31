@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_multiselect/flutter_multiselect.dart';
+import 'package:project4/utils/inputValidator.dart';
 
 class FormScreen extends StatefulWidget {
   static String routeName = "/form";
@@ -28,9 +29,7 @@ class _FormScreenState extends State<FormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Color(0xFF00a79B),
-                     
-                    
+        backgroundColor: Color(0xFF00a79B),
         title: Text("Submit Information"),
       ),
       body: Form(
@@ -56,6 +55,9 @@ class _FormScreenState extends State<FormScreen> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter some text';
+                        }
+                        if (!validateNameInput(value)) {
+                          return 'Invalid name input!';
                         }
                         return null;
                       },
@@ -245,13 +247,13 @@ class _FormScreenState extends State<FormScreen> {
               height: 30,
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                    primary: Color(0xFF00a79B),
-                    textStyle: TextStyle(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF00a79B),
+                  textStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 40,
-        
-                  ),),
+                  ),
+                ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,

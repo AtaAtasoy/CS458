@@ -1,5 +1,4 @@
-bool validateNameInput(name, surname) {
-  String fullName = name + " " + surname;
+bool validateNameInput(fullName) {
   RegExp fullNameRegex = RegExp(r'[a-zA-Z][a-zA-Z ]+');
 
   return fullNameRegex.hasMatch(fullName);
