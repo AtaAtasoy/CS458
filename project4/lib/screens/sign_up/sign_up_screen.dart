@@ -39,6 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          key: Key('username-field'),
                           controller: usernameController,
                           decoration: InputDecoration(hintText: 'Username'),
                         )))
@@ -54,6 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          key: Key('password-field'),
                           obscureText: true,
                           controller: passwordController,
                           decoration: InputDecoration(hintText: 'Password'),
@@ -71,6 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
                           controller: emailController,
+                          key: Key('email-field'),
                           decoration: InputDecoration(hintText: 'Email'),
                         )))
               ],

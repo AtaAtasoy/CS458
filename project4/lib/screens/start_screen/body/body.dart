@@ -17,6 +17,7 @@ class Body extends StatelessWidget {
                   height: 150,
                 ),
                 ElevatedButton(
+                    key: Key('navigate-to-signin'),
                     onPressed: () {
                       Navigator.pushNamed(context, SignInScreen.routeName);
                     },
@@ -32,6 +33,7 @@ class Body extends StatelessWidget {
                   height: 50,
                 ),
                 ElevatedButton(
+                    key: Key('navigate-to-signup'),
                     onPressed: () {
                       Navigator.pushNamed(context, SignUpScreen.routeName);
                     },

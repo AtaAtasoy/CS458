@@ -25,8 +25,8 @@ class _SignInScreenState extends State<SignInScreen> {
         children: <Widget>[
           Container(
             height: 300,
-            decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('virus.jpeg'))),
+          //   decoration: BoxDecoration(
+          //       //image: DecorationImage(image: AssetImage('virus.jpeg'))),
           ),
           SizedBox(
             height: 20,
@@ -72,6 +72,7 @@ class _SignInScreenState extends State<SignInScreen> {
               child: Container(
                 height: 60,
                 child: ElevatedButton(
+                  key: Key('signIn-button'),
                   onPressed: () {
                     _isValidInput();
                     if (validCredentials) {
