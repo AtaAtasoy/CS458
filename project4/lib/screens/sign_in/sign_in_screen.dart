@@ -64,9 +64,11 @@ class _SignInScreenState extends State<SignInScreen> {
               borderRadius: BorderRadius.circular(5),
               child: Container(
                 height: 60,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {Navigator.pushNamed(context, FormScreen.routeName);},
-                  color: Color(0xFF00a79B),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(0, 167, 155, 1.0)
+                  ),
                   child: Text(
                     'SIGN IN',
                     style: TextStyle(
