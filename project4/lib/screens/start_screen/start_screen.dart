@@ -11,7 +11,6 @@ class StartScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Chose Option"),
         backgroundColor: Color(0xFF00a79B),
-        
       ),
       body: SingleChildScrollView(
         // <-- wrap this around

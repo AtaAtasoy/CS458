@@ -12,8 +12,8 @@ import 'package:project4/routes.dart';
 
 void main() {
   setUpAll(() {
-        TestWidgetsFlutterBinding.ensureInitialized();
-      });
+    TestWidgetsFlutterBinding.ensureInitialized();
+  });
   group('SignUp Screen', () {
     testWidgets('should reject username starting with . or _',
         (WidgetTester tester) async {
@@ -109,18 +109,33 @@ void main() {
 
       expect(find.textContaining("Invalid"), findsOneWidget);
     });
+    testWidgets('should reject existing user', (WidgetTester tester) async {
+      final testWidget = MaterialApp(home: SignUpScreen());
+
+      await tester.pumpWidget(testWidget);
+      await tester.pumpAndSettle();
+
+      // Find Username Field
+      await tester.enterText(find.byKey(Key('username-field')), "ataatasoy");
+      await tester.enterText(
+          find.byKey(Key('password-field')), "ataatasoy");
+      await tester.enterText(find.byKey(Key('email-field')), "ataatasoy@email.com");
+
+      await tester.tap(find.byType(ElevatedButton));
+      await tester.pump(new Duration(seconds: 2));
+
+      expect(find.textContaining("User already exists"), findsOneWidget);
+    });
 
     testWidgets('should redirect to signin after successful signup',
         (WidgetTester tester) async {
-      
-       
       await tester.pumpWidget(MaterialApp(routes: routes));
       await tester.pumpAndSettle();
 
       await tester.tap(find.byKey(Key('navigate-to-signup')));
       await tester.pumpAndSettle();
 
-      // Find Username Field
+      // Signup A User
       await tester.enterText(find.byKey(Key('username-field')), "newtestuser");
       await tester.enterText(
           find.byKey(Key('password-field')), "newtestuserpassword");
@@ -129,8 +144,22 @@ void main() {
       await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
 
-      expect(find.byKey(Key('signIn-button'), skipOffstage: false),
-          findsOneWidget);
+      // Sign-In
+
+      await tester.enterText(find.byKey(Key('username-field')), "newtestuser");
+      await tester.pumpAndSettle();
+
+      await tester.enterText(
+          find.byKey(Key('password-field')), "newtestuserpassword");
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(find.byType(ElevatedButton));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byKey(Key('signIn-button')));
+      await tester.pumpAndSettle();
+
+      expect(find.text("Submit Information"), findsOneWidget);
     });
   });
 }

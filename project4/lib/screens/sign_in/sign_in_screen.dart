@@ -40,6 +40,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          key: Key('username-field'),
                           decoration: InputDecoration(hintText: 'Username'),
                           controller: usernameController,
                         )))
@@ -55,6 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Container(
                         margin: EdgeInsets.only(right: 20, left: 10),
                         child: TextField(
+                          key: Key('password-field'),
                           obscureText: true,
                           controller: passwordController,
                           decoration: InputDecoration(hintText: 'Password'),
@@ -85,7 +87,6 @@ class _SignInScreenState extends State<SignInScreen> {
                     'SIGN IN',
                     style: TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
                         fontSize: 20),
                   ),
                 ),
@@ -108,7 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       TextSpan(
                         text: 'SIGN UP',
                         style: TextStyle(
-                            color: Colors.teal, fontWeight: FontWeight.bold),
+                            color: Colors.teal),
                       )
                     ]),
               ),
