@@ -1,5 +1,5 @@
 bool validateNameInput(fullName) {
-  RegExp fullNameRegex = RegExp(r'[a-zA-Z][a-zA-Z ]+');
+  RegExp fullNameRegex = RegExp(r"^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$");
 
   return fullNameRegex.hasMatch(fullName);
 }
