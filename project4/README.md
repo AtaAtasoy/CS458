@@ -1,16 +1,34 @@
-# project4
+# Project4 - Unit Testing
 
-A new Flutter project.
+![Coverage](./coverage_badge.svg?sanitize=true)
 
-## Getting Started
+The Project was implemented using and tested using Flutter.
 
-This project is a starting point for a Flutter application.
+The code coverage was calculated using Flutter's own test library.
 
-A few resources to get you started if this is your first Flutter project:
+The script on `index.js` was used to generate the coveradge badge above.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+The line coverage file is at `coverage/lcov.info`
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Instructions to Run the App/Tests
+
+```bash
+flutter pub get # Install dependencies
+flutter test --coverage # Runs all the tests and outputs the line coverage
+flutter run # Runs the app
+```
+
+## Generate LCOV HTML
+
+```bash
+brew install lcov # On Mac, probably "sudo apt-get lcov" on linux.
+genhtml -o coverage coverage/lcov.info # Generates the HTML
+open coverage/index.html # Opens the HTML file on your default browser
+```
+
+## Generate the Badge
+
+```bash
+yarn install 
+node index.js
+```

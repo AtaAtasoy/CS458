@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project4/routes.dart';
-import 'package:project4/screens/start_screen/start_screen.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,0 +1,13 @@
+{
+  "name": "project4",
+  "version": "1.0.0",
+  "description": "CS458 P4",
+  "main": "index.js",
+  "repository": "https://github.com/AtaAtasoy/CS458",
+  "author": "Ata Atasoy",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "lcov2badge": "^0.1.2"
+  }
+}
