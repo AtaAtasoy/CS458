@@ -1,8 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:project4/screens/sign_in/sign_in_screen.dart';
 import 'package:project4/utils/authentication.dart';
+import 'package:project4/utils/inputValidator.dart';
 
 class SignUpScreen extends StatefulWidget {
   static String routeName = "/sign_up";
@@ -14,7 +13,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
+  bool userNotExists = true;
   bool validCredentials = true;
+  bool validEmail = true;
 
   @override
   Widget build(BuildContext context) {
@@ -107,13 +108,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
-                    validCredentials = signUp(usernameController.text,
-                        passwordController.text, emailController.text);
-                    if (validCredentials) {
+                    _isValidInput();
+                    if (validCredentials && validEmail && userNotExists) {
                       Navigator.pushNamed(context, SignInScreen.routeName);
-                    } else {
-                      print(validCredentials);
-                      Text("Invalid Credentials");
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -129,9 +126,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
           ),
+          if (!userNotExists)
+            Text("User already exists!", textAlign: TextAlign.center),
+          if (!validCredentials)
+            Text(
+                "Username & Password is 8-20 Characters long.\n No _ or . at the beginning.\n no __ or _. or ._ or .. inside.\nAllowed Characters: [a-zA-Z0-9._].\nno _ or . at the end",
+                textAlign: TextAlign.center),
+          if (!validEmail)
+            Text("Invalid email address!", textAlign: TextAlign.center)
         ],
       ),
     );
+  }
+
+  _isValidInput() {
+    setState(() {
+      validEmail = validateEmailInput(emailController.text);
+      validCredentials = validateUserCredentials(usernameController.text) &&
+          validateUserCredentials(passwordController.text);
+    });
+    if (validEmail && validCredentials) {
+      setState(() {
+        userNotExists = signUp(usernameController.text, passwordController.text,
+            emailController.text);
+      });
+    }
   }
 }
 
@@ -139,9 +158,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 Widget build(BuildContext context) {
   return Container(
     height: 200,
-    decoration: BoxDecoration(
-        image: DecorationImage(
-            fit: BoxFit.cover, image: AssetImage('asset/img/app.png'))),
+    decoration:
+        BoxDecoration(image: DecorationImage(image: AssetImage('virus.jpeg'))),
     child: Positioned(
         child: Stack(
       children: <Widget>[

@@ -26,8 +26,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Container(
             height: 300,
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('virus.jpeg'))),
+                image: DecorationImage(image: AssetImage('virus.jpeg'))),
           ),
           SizedBox(
             height: 20,
@@ -74,11 +73,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
-                    validCredentials = signIn(
-                        usernameController.text, passwordController.text);
+                    _isValidInput();
                     if (validCredentials) {
                       Navigator.pushNamed(context, FormScreen.routeName);
-                    }
+                    } 
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromRGBO(0, 167, 155, 1.0)),
@@ -115,10 +113,16 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
           ),
-          if (!validCredentials)
-            Text("Invalid Credentials")
+          if (!validCredentials) Text("Invalid Credentials", textAlign: TextAlign.center)
         ],
       ),
     );
+  }
+
+  _isValidInput() {
+    setState(() {
+      validCredentials =
+          signIn(usernameController.text, passwordController.text);
+    });
   }
 }
