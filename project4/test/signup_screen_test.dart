@@ -28,7 +28,7 @@ void main() {
           find.byKey(Key('password-field')), "validpassword");
       await tester.enterText(find.byKey(Key('email-field')), "valid@email.com");
       await tester.tap(find.byType(ElevatedButton));
-      await tester.pump(new Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       expect(find.textContaining("Username & Password is 8-20 Characters long"),
           findsOneWidget);
@@ -47,7 +47,7 @@ void main() {
       await tester.enterText(find.byKey(Key('email-field')), "valid@email.com");
 
       await tester.tap(find.byType(ElevatedButton));
-      await tester.pump(new Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       expect(find.textContaining("Username & Password is 8-20 Characters long"),
           findsOneWidget);
@@ -66,7 +66,7 @@ void main() {
       await tester.enterText(find.byKey(Key('email-field')), "valid@email.com");
 
       await tester.tap(find.byType(ElevatedButton));
-      await tester.pump(new Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       expect(find.textContaining("Username & Password is 8-20 Characters long"),
           findsOneWidget);
@@ -86,7 +86,7 @@ void main() {
       await tester.enterText(find.byKey(Key('email-field')), "valid@email.com");
 
       await tester.tap(find.byType(ElevatedButton));
-      await tester.pump(new Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       expect(find.textContaining("Username & Password is 8-20 Characters long"),
           findsOneWidget);
@@ -105,7 +105,7 @@ void main() {
       await tester.enterText(find.byKey(Key('email-field')), "notanemail");
 
       await tester.tap(find.byType(ElevatedButton));
-      await tester.pump(new Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       expect(find.textContaining("Invalid"), findsOneWidget);
     });
@@ -122,7 +122,7 @@ void main() {
       await tester.enterText(find.byKey(Key('email-field')), "ataatasoy@email.com");
 
       await tester.tap(find.byType(ElevatedButton));
-      await tester.pump(new Duration(seconds: 2));
+      await tester.pumpAndSettle();
 
       expect(find.textContaining("User already exists"), findsOneWidget);
     });
@@ -145,7 +145,6 @@ void main() {
       await tester.pumpAndSettle();
 
       // Sign-In
-
       await tester.enterText(find.byKey(Key('username-field')), "newtestuser");
       await tester.pumpAndSettle();
 

@@ -32,7 +32,8 @@ class _FormScreenState extends State<FormScreen> {
         backgroundColor: Color(0xFF00a79B),
         title: Text("Submit Information"),
       ),
-      body: Form(
+      body: ListView(children: [
+              Form(
         key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -112,6 +113,7 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 SizedBox(width: 10.0),
                 DropdownButton<String>(
+                  key: Key('gender-dropdown'),
                   value: dropdownValue1,
                   icon: const Icon(Icons.arrow_downward),
                   iconSize: 24,
@@ -148,6 +150,7 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 SizedBox(width: 10.0),
                 DropdownButton<String>(
+                  key: Key('vaccinated-dropdown'),
                   value: dropdownValue2,
                   icon: const Icon(Icons.arrow_downward),
                   iconSize: 24,
@@ -259,11 +262,11 @@ class _FormScreenState extends State<FormScreen> {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Data is Valid')),
+                      const SnackBar(content: Text('Data is Valid', key: Key('valid-data-prompt'))),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Data is NOT Valid!!!')),
+                      const SnackBar(content: Text('Data is NOT Valid!!!', key: Key('invalid-data-prompt'))),
                     );
                   }
                 },
@@ -273,6 +276,7 @@ class _FormScreenState extends State<FormScreen> {
           ],
         ),
       ),
+      ],)
     );
   }
 }

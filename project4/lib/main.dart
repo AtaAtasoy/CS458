@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Project 4',
-      initialRoute: StartScreen.routeName,
       routes: routes,
     );
   }

@@ -7,7 +7,6 @@ import 'package:project4/screens/start_screen/start_screen.dart';
 final Map<String, WidgetBuilder> routes = {
   SignInScreen.routeName: (context) => SignInScreen(),
   SignUpScreen.routeName: (context) => SignUpScreen(),
-  StartScreen.routeName: (context) => StartScreen(),
   FormScreen.routeName: (context) => FormScreen(),
   "/": (context) => StartScreen()
 };

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project4/screens/form_screen/form_screen.dart';
+import 'package:project4/screens/sign_up/sign_up_screen.dart';
 import 'package:project4/utils/authentication.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -23,11 +24,6 @@ class _SignInScreenState extends State<SignInScreen> {
       backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
-          Container(
-            height: 300,
-          //   decoration: BoxDecoration(
-          //       //image: DecorationImage(image: AssetImage('virus.jpeg'))),
-          ),
           SizedBox(
             height: 20,
           ),
@@ -79,15 +75,13 @@ class _SignInScreenState extends State<SignInScreen> {
                     _isValidInput();
                     if (validCredentials) {
                       Navigator.pushNamed(context, FormScreen.routeName);
-                    } 
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromRGBO(0, 167, 155, 1.0)),
                   child: Text(
                     'SIGN IN',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
               ),
@@ -98,8 +92,9 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, 'SignUp');
+              Navigator.pushNamed(context, SignUpScreen.routeName);
             },
+            key: Key('navigate-to-signup'),
             child: Center(
               child: RichText(
                 text: TextSpan(
@@ -108,14 +103,14 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       TextSpan(
                         text: 'SIGN UP',
-                        style: TextStyle(
-                            color: Colors.teal),
+                        style: TextStyle(color: Colors.teal),
                       )
                     ]),
               ),
             ),
           ),
-          if (!validCredentials) Text("Invalid Credentials", textAlign: TextAlign.center)
+          if (!validCredentials)
+            Text("Invalid Credentials", textAlign: TextAlign.center)
         ],
       ),
     );
